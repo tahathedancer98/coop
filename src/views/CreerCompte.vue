@@ -6,7 +6,8 @@
       <form class="login-form" @submit.prevent="creerCompte">
         <input v-model="fullname" type="text" required placeholder="Nom d'utilisateur">
         <input v-model="email" type="text" required placeholder="Email">
-        <input v-model="password" type="text" required placeholder="Mot de passe">
+        <input v-model="password" type="password" required placeholder="Mot de passe">
+        <input v-model="passwordCheck" type="password" required placeholder="Saisir à nouveau le Mot de passe">
         <button>Créer mon compte</button>
         <u><p class="message"><router-link to="/se-connecter">Retourner</router-link></p></u>
       </form>
@@ -26,16 +27,21 @@ export default {
   mounted() {},
   methods:{
     creerCompte(){
-      api.post('members',{
-        fullname:this.fullname,
-        email:this.email,
-        password:this.password
-      }).then(response =>{
-        alert('Votre compte a été bien créé');
-        this.$router.push('/se-connecter');
-      }).catch(error => {
-        var error = document.getElementById("error").style.display= "block";
-      });
+      if(this.password != this.passwordCheck){
+        alert('veuillez saisir le même mot de passe');
+      }else{
+        api.post('members',{
+          fullname:this.fullname,
+          email:this.email,
+          password:this.password
+        }).then(response =>{
+          alert('Votre compte a été bien créé');
+          this.$router.push('/se-connecter');
+        }).catch(error => {
+          var error = document.getElementById("error").style.display= "block";
+        });
+      }
+      
     }
   }
 };

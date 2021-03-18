@@ -1,8 +1,23 @@
 <template>
-  <div class="ui raised grid container segment" id="main">
-    <sui-menu-menu class="fourteen wide column">
+  <div class="ui raised grid container segment" id="main" v-if="messageText">
+    <section>
+      <header>
+        <div>
+          <b><router-link :to="{name:'Membres',params:{membre_id:membre.id}}" title="Profil">{{membre.fullname}}</router-link></b>
+          {{message.message}} 
+        </div>
+      </header>
+    </section>
+    
+    
+    <!-- <sui-menu-menu class="fourteen wide column">
       <sui-input placeholder="Message" v-model="messageText" v-if="modify"/>
-      <strong v-else>{{message.message}}</strong>
+      <strong v-else>
+        <div>
+          {{membre.fullname}}
+          {{message.message}} 
+        </div>
+      </strong>
     </sui-menu-menu>
     <sui-menu-menu class="two wide column" id="modMessage" v-if="access">
       <div v-if="modify">
@@ -21,23 +36,28 @@
           <sui-icon name="trash" />
         </sui-button>
       </div>
-    </sui-menu-menu>
+    </sui-menu-menu> -->
   </div>
 </template>
 
 <script>
+import Header from './Header.vue';
 export default {
+  components: { Header },
   name: "Message",
   props : ['message'],
   data(){
     return{
       messageText: this.message.message,
       access: false,
-      modify: false
+      modify: false,
+      membre : false
     }
   },
   mounted() {
-    if(this.message.member_id === this.$store.state.membre.id){
+    // boucle sur tous les membres qui dans le store
+    // mettre dans this.membre celui qui a pour id this.message.member_id
+  if(this.message.member_id === this.$store.state.membre.id){
       this.access = true;
     }
   },

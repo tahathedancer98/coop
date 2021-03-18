@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form">
-        <h2><strong>BIENVENUE À COOP</strong></h2>
+        <h2><strong>CONNEXION / INSCRIPTION</strong></h2>
       <div class="thumbnail">
         <img src="https://istsansilvestre.com/wp-content/uploads/2020/11/1111.png"/>
       </div>
@@ -94,6 +94,10 @@ h2{
   box-sizing: border-box;
   font-size: 14px;
 }
+.form input:hover{
+  background: black;
+  color:white;
+}
 .form button {
   outline: 0;
   background: #679199;
@@ -146,6 +150,10 @@ u{
 
 }
 .message:hover{
+  background: black;
+  color:white;
+}
+h2{
   background: black;
   color:white;
 }

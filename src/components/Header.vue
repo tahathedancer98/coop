@@ -2,7 +2,7 @@
   <header>
     <sui-menu class="ui menu" id="header" attached="top">
       <sui-menu-menu>
-        <a class="item">Home</a>
+        <a class="item">COOP</a>
         <router-link to="/conversations" class="item">Conversations</router-link>
         <router-link to="/membres" class="item">Membres</router-link>
       </sui-menu-menu>
@@ -33,7 +33,8 @@ export default {
   },
   methods: {
     seDesconnecter(){
-      this.$store.commit('setMembre', '');
+      this.$store.commit('setMembre');
+      this.$store.commit('setToken');
       this.$router.push('/se-connecter');
     }
   },

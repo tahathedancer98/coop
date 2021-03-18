@@ -16,10 +16,10 @@ export default new Vuex.Store({
     membres: []
   },
   mutations: {
-    setMembre(state, membre){
+    setMembre(state, membre=false){
       state.membre = membre;
     },
-    setToken(state, token){
+    setToken(state, token=false){
       state.token = token;
     },
     setConversations(state,conversations){

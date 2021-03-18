@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-// import md5 from 'crypto-js/md5';
+
 import SuiVue from 'semantic-ui-vue';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -11,15 +11,10 @@ Vue.use(SuiVue);
 // window.md5=md5;
 
 window.api = axios.create({
-  baseURL: 'https://tools.sopress.net/iut/coop/api/',
-  headers: { Authorization: 'dbb59481e374a8a1821b8acea09be603bb967ae2' }
+  baseURL: 'https://allweb.fun/coop/api/',
+  headers: { Authorization: 'f7550f8b269f5ae7e0b16eb35d6c2e2b646ebad3' }
 });
-/*
-let config = {
-	headers: {'Authorization': "dbb59481e374a8a1821b8acea09be603bb967ae2"}
-}
-Axios.post(api_route,params,config).then(() => { ... });
-*/
+
 Vue.config.productionTip = false
 
 Vue.prototype.$bus = new Vue()
