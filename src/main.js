@@ -3,13 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-
+// J'ai utilisé Semantic-UI-Vue pour bien placer mes éléments.
 import SuiVue from 'semantic-ui-vue';
 import 'semantic-ui-css/semantic.min.css';
 
 Vue.use(SuiVue);
 // window.md5=md5;
 
+//My Token : f7550f8b269f5ae7e0b16eb35d6c2e2b646ebad3
 window.api = axios.create({
   baseURL: 'https://allweb.fun/coop/api/',
   headers: { Authorization: 'f7550f8b269f5ae7e0b16eb35d6c2e2b646ebad3' }

@@ -14,7 +14,7 @@ export default {
     };
   },
   mounted() {
-    console.log("L'app est demarrée");
+    console.log("L'app a commencé");
 
     api
       .get("ping")

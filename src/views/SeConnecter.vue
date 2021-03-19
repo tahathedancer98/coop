@@ -27,6 +27,8 @@ export default {
   mounted() {},
   methods: {
     seConnecter() {
+      //Pour récuperer les données et les envoyé afin de checker la connexion (on appel setMembre et setToken)
+      //Si la connexion est correct on envoie vers la vue Conversations
       api
         .post("members/signin", {
           email: this.email,

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header/>
+    <!-- sui-menu est une classe de Semantic-UI-Vue pour le css et tout... -->
     <sui-menu class="ui grid centered menu">
       <sui-menu-menu class="column" id="btnReturn">
         <sui-button animated color="teal" @click="retourner">
@@ -85,6 +86,7 @@ export default {
     this.$bus.$on('charger-conversation',this.chargerConversation);
   },
   methods : {
+    // Charger et afficher une conversation spécifique 
     chargerConversation(){
       api.get('channels/'+this.$route.params.id).then(response => {
         this.conversation = response.data;
@@ -96,6 +98,7 @@ export default {
     retourner(){
       this.$router.push('/conversations');
     },
+    // Effacer une conversation spécifique
     effacerConversation(){
       api.delete('channels/'+this.conversation.id).then(response => {
         alert('Conversation effacée correctement');
@@ -105,6 +108,7 @@ export default {
         alert('Error : ' + error);
       });
     },
+    // Modifier la conversation choisie
     modifierConversation(){
       api.put('channels/'+this.conversation.id, {
         label: this.label,
@@ -121,6 +125,7 @@ export default {
     setModify(){
       this.modify = !this.modify;
     },
+    // Afficher tous les messages d'une conversation
     chargerMessages(){
       api.get('channels/'+this.conversation.id+'/posts').then(response => {
         this.messages = response.data.reverse();
@@ -128,6 +133,7 @@ export default {
         alert("Error : " + error);
       })
     },
+    // Ajouter un message dans une conversation
     ajouterMessage(){
       api.post('channels/'+this.conversation.id+'/posts',{
         member_id: this.$store.state.membre.id,

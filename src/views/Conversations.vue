@@ -55,11 +55,13 @@ export default {
     this.$bus.$on('charger-conversations',this.chargerConversations);
   },
   methods: {
+    // Pour afficher toutes les conversations
     chargerConversations(){
       api.get('channels').then(response => {
         this.$store.commit('setConversations',response.data);
       });
     },
+    // Ajouter une nouvelle conversation
     ajouterConversation(){
       api.post('channels',{
         label: this.label,

@@ -1,16 +1,6 @@
 <template>
-  <div class="ui raised grid container segment" id="main" v-if="messageText">
-    <section>
-      <header>
-        <div>
-          <b><router-link :to="{name:'Membres',params:{membre_id:membre.id}}" title="Profil">{{membre.fullname}}</router-link></b>
-          {{message.message}} 
-        </div>
-      </header>
-    </section>
-    
-    
-    <!-- <sui-menu-menu class="fourteen wide column">
+  <div class="ui raised grid container segment" id="main" v-if="messageText">  
+    <sui-menu-menu class="fourteen wide column">
       <sui-input placeholder="Message" v-model="messageText" v-if="modify"/>
       <strong v-else>
         <div>
@@ -36,7 +26,7 @@
           <sui-icon name="trash" />
         </sui-button>
       </div>
-    </sui-menu-menu> -->
+    </sui-menu-menu>
   </div>
 </template>
 
@@ -62,7 +52,9 @@ export default {
     }
   },
   methods:{
+    // Pour modifier un message spécifique
     modifierMessage(){
+      // on utilise api.put pour renvoyer les données afin de modifier ce qu'il y avait avant.
       api.put('channels/'+ this.message.channel_id +'/posts/'+this.message.id,{
         message: this.messageText
       }).then(response => {
@@ -73,8 +65,10 @@ export default {
         alert('Error : '+error);
       })
     },
+    // Effacer un message
     effacerMessage(){
       if(this.access){
+        // on utilise api.delete pour supprimé le message choisi.
         api.delete('channels/'+ this.message.channel_id +'/posts/'+this.message.id).then(response => {
           alert('Message effacé correctement');
           this.$bus.$emit('charger-conversation');

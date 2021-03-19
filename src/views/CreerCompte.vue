@@ -27,15 +27,18 @@ export default {
   mounted() {},
   methods:{
     creerCompte(){
+      // Verification du mot de passe si c'est indentique dans les deux champs de text : 
       if(this.password != this.passwordCheck){
         alert('veuillez saisir le même mot de passe');
       }else{
+        // Post avec les données récupérées lors de la création du compte
         api.post('members',{
           fullname:this.fullname,
           email:this.email,
           password:this.password
         }).then(response =>{
           alert('Votre compte a été bien créé');
+          // et là on push vers se connecter pour afficher cette vue
           this.$router.push('/se-connecter');
         }).catch(error => {
           var error = document.getElementById("error").style.display= "block";
